@@ -38,7 +38,17 @@ app.post("/products", async (req, res) => {
 
     const product = await mainProducts.create(newProduct);
 
-    return res.send(200).send(product);
+    return res.status(200).send(product);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ message: error.message });
+  }
+});
+
+app.get("/products", async (req, res) => {
+  try {
+    const allProduct = await mainProducts.find({});
+    return res.status(200).json(allProduct);
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ message: error.message });
