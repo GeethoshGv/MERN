@@ -55,6 +55,19 @@ app.get("/products", async (req, res) => {
   }
 });
 
+app.get("/products/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const singleProduct = await mainProducts.findById(id);
+
+    return res.status(200).json(singleProduct);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ message: error.message });
+  }
+});
+
 mongoose
   .connect(process.env.mongoURL)
   .then(() => {
