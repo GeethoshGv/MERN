@@ -95,6 +95,21 @@ app.put("/products/:id", async (req, res) => {
   }
 });
 
+app.delete("/products/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const deleteProduct = await mainProducts.findByIdAndDelete(id);
+
+    if (!deleteProduct) {
+      res.status(404).send("product not found");
+    }
+    return res.status(200).send({ message: "product delete successfully" });
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+});
+
 mongoose
   .connect(process.env.mongoURL)
   .then(() => {
