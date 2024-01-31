@@ -68,6 +68,33 @@ app.get("/products/:id", async (req, res) => {
   }
 });
 
+app.put("/products/:id", async (req, res) => {
+  try {
+    if (
+      !req.body.category ||
+      !req.body.brand ||
+      !req.body.price ||
+      !req.body.description ||
+      !req.body.stock
+    ) {
+      return res.status(400).send({
+        message: "error on post",
+      });
+    }
+    const { id } = req.params;
+
+    const result = await mainProducts.findByIdAndUpdate(id, req.body);
+
+    if (!result) {
+      return res.status(404).json({ message: "product not found" });
+    }
+
+    return res.status(200).send("updated successfully");
+  } catch (error) {
+    res.status(404).send({ message: error.message });
+  }
+});
+
 mongoose
   .connect(process.env.mongoURL)
   .then(() => {
