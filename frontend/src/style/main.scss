@@ -1,0 +1,17 @@
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: #adadad;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  font-size: 2rem;
+}
