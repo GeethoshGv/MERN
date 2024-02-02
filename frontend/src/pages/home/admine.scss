@@ -1,4 +1,21 @@
-.admin_div {
-  height: 100vh;
+.admin_main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  height: 100%;
+
+  .admin_sec {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 1rem;
+  }
+  .admine_container {
+    h1 {
+      font-size: 1.5rem;
+    }
+    .pro_container {
+      padding: 1rem;
+    }
+  }
 }

@@ -15,25 +15,27 @@ const Admin = () => {
   // console.log(product);
 
   return (
-    <div className="main">
+    <div className="admin_main">
       {product.length > 0 ? (
         product.map((item) => {
           return (
-            <div className="container" key={item._id}>
-              <h2>Category: {item.category}</h2>
-              <p>Brand: {item.brand}</p>
-              <p>Price: {item.price}</p>
-              <p>Description: {item.description}</p>
-              <p>Stock: {item.stock}</p>
-              <p>
-                <Link to={`/products/details/${item._id}`}>details</Link>
-              </p>
-              <p>
-                <Link to={`/products/edit/${item._id}`}>edit</Link>
-              </p>
-              <p>
-                <Link to={`/products/edit/${item._id}`}>delete</Link>
-              </p>
+            <div className="admin_sec">
+              <div className="admine_container" key={item._id}>
+                <div className="pro_container">
+                  <h1>Brand: {item.brand}</h1>
+                  <h1>Price: {item.price}</h1>
+
+                  <h1>
+                    <Link to={`/products/details/${item._id}`}>details</Link>
+                  </h1>
+                  <h1>
+                    <Link to={`/products/edit/${item._id}`}>edit</Link>
+                  </h1>
+                  <h1>
+                    <Link to={`/products/delete/${item._id}`}>delete</Link>
+                  </h1>
+                </div>
+              </div>
             </div>
           );
         })
