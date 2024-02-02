@@ -12,7 +12,7 @@ const Admin = () => {
       .then((data) => setProduct(data));
   }, []);
 
-  console.log(product);
+  // console.log(product);
 
   return (
     <div className="main">
@@ -25,6 +25,15 @@ const Admin = () => {
               <p>Price: {item.price}</p>
               <p>Description: {item.description}</p>
               <p>Stock: {item.stock}</p>
+              <p>
+                <Link to={`/products/details/${item._id}`}>details</Link>
+              </p>
+              <p>
+                <Link to={`/products/edit/${item._id}`}>edit</Link>
+              </p>
+              <p>
+                <Link to={`/products/edit/${item._id}`}>delete</Link>
+              </p>
             </div>
           );
         })
